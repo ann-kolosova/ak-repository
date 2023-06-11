@@ -42,11 +42,11 @@ vowels = {
 
 sep_num = 17
 print('-' * sep_num)
-print(f"\x1B[3m| {'vowel | count':^5} |\x1B[0m")
+print(f"| {'vowel | count':^5} |")
 print('-' * sep_num)
 
 for val1, val2 in vowels.items():
-    print(f'\x1B[3m| {val1:^5} | {poem_text.lower().count(val1):^5} |\x1B[0m')
+    print(f'| {val1:^5} | {poem_text.lower().count(val1):^5} |')
     poem_text = poem_text.replace(val1, val2)
     poem_text = poem_text.replace(val1.upper(), val2.upper())
 print('-' * sep_num)
