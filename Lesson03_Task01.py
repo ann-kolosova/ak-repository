@@ -1,5 +1,5 @@
 """
-Lesson02 Task02.
+Lesson03 Task01.
 
 # You have list of tuples. Each tuple represents:
 name, age, some sum, last name, sex
@@ -24,9 +24,6 @@ import itertools
 from operator import itemgetter
 
 SEP_NUM = 17
-print('-' * SEP_NUM)
-print(f"| {'sex':<6} | {'count':^5} |")
-print('-' * SEP_NUM)
 
 people = [
     ('Alice', 32, 100, 'Johnson', 'female'),
@@ -70,10 +67,15 @@ people = [
     ('Mike', 55, 55, 'Johnson', 'male'),
 ]
 
-updated_people = people[2:-2]
-updated_people.sort(key=itemgetter(1, 4))
+print('-' * SEP_NUM)
+print(f"| {'sex':<6} | {'count':^5} |")
+print('-' * SEP_NUM)
 
-flat_list = list(itertools.chain.from_iterable(updated_people))
+people.sort(key=itemgetter(1, 4))
+people = people[2:-2]
+
+
+flat_list = list(itertools.chain.from_iterable(people))
 male_count = flat_list.count('male')
 female_count = flat_list.count('female')
 
@@ -81,6 +83,5 @@ print(f"|{'female':^8}|{female_count:^7}|")
 print(f"|{'male':^8}|{male_count:^7}|")
 print('-' * SEP_NUM)
 
-print('updated_people=')
-for person in updated_people:
-    print(person)
+print('people:')
+print(*people, sep='\n')
