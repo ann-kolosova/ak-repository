@@ -8,6 +8,8 @@ Cars should be sorted by price ascending.
 We should print up to five first found elements
 """
 
+from itertools import islice
+
 car_data = {
     'Mercedes': ('silver', 2019, 1.8, 'sedan', 50000),
     'Audi': ('black', 2020, 2.0, 'sedan', 55000),
@@ -69,7 +71,7 @@ for car, data in car_data.items():
 sorted_car_data = dict(sorted(car_searched.items(), key=lambda x: x[0][-1]))
 
 # Print up to five first found elements
-car_list = dict(list(sorted_car_data.items())[:5])
+car_list = (dict(islice(sorted_car_data.items(), 5)))
 
 for new_list in car_list.items():
     print(new_list)
