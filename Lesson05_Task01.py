@@ -10,6 +10,8 @@ We should print up to five first found elements
 
 from itertools import islice
 
+OUT_ROWS_NUM = 5
+
 car_data = {
     'Mercedes': ('silver', 2019, 1.8, 'sedan', 50000),
     'Audi': ('black', 2020, 2.0, 'sedan', 55000),
@@ -53,25 +55,19 @@ car_data = {
 }
 
 search_criteria = (2017, 1.6, 36000)
+year, eng_vol, price = search_criteria
 
 car_searched = {}
 
-# Filter 'car_data' according to 'search_criteria'
+# filter 'car_data' according to 'search_criteria'
 for car, data in car_data.items():
-    if all(
-            [
-                data[1] >= search_criteria[0],
-                data[2] >= search_criteria[1],
-                data[4] <= search_criteria[2],
-            ],
-    ):
+    pass_criteria = all((data[1] >= year, data[2] >= eng_vol, data[4] <= price))
+    if pass_criteria:
         car_searched[car] = data
 
-# Sort cars by price
+# sort cars by price
 sorted_car_data = dict(sorted(car_searched.items(), key=lambda x: x[0][-1]))
 
-# Print up to five first found elements
-car_list = (dict(islice(sorted_car_data.items(), 5)))
-
-for new_list in car_list.items():
-    print(new_list)
+# print up to five first found elements
+car_list = (dict(islice(sorted_car_data.items(), OUT_ROWS_NUM)))
+print(*car_list.items(), sep='\n')
