@@ -24,9 +24,20 @@ l2 = [1, 2, 3]
 l1 = [2, 4, 6, 8, 10]
 l2 = [1, 2, 3]
 
-([l1.append(0) for _ in range(len(l2) - len(l1))]
-    if len(l1) < len(l2)
-    else [l2.append(0) for _ in range(len(l1) - len(l2))])
+# copy l1, l2
+l3 = l1[:]
+l4 = l2[:]
 
-list_target = list(zip(l1, l2))
+# determine the lengths of lists
+len_l3 = len(l3)
+len_l4 = len(l4)
+
+# add 0s to list with shorter length
+if len_l3 < len_l4:
+    l3 += [0] * (len_l4 - len_l3)
+else:
+    l4 += [0] * (len_l3 - len_l4)
+
+# create the target list by zipping lists
+list_target = [(x, y) for x, y in zip(l3, l4)]
 print(list_target)
