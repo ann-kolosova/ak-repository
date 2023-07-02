@@ -59,8 +59,10 @@ if 100 <= num <= 999:
         print(f'"{hundreds_ones[digit[0]]} Hundred"')
     elif digit[1] == '1':
         print(f'"{hundreds_ones[digit[0]]} Hundred {tens_1[digit[1:]]}"')
+    elif digit[1] > '0' and digit[2] == '0':
+        print(f'"{hundreds_ones[digit[0]]} Hundred {tens_2[digit[1]]}"')
     elif digit[1] == '0' and digit[2] != '0':
-        print(f'"{hundreds_ones[digit[0]]} Hundred {hundreds_ones[digit[0]]}"')
+        print(f'"{hundreds_ones[digit[0]]} Hundred {hundreds_ones[digit[2]]}"')
     else:
         print(f'"{hundreds_ones[digit[0]]} Hundred {tens_2[digit[1]]} '
               f'{hundreds_ones[digit[2]]}"')
