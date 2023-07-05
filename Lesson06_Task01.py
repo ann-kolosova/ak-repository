@@ -21,23 +21,25 @@ l1 = [2, 4, 6, 8, 10]
 l2 = [1, 2, 3]
 """
 
+NUM = 0
+
 l1 = [2, 4, 6, 8, 10]
 l2 = [1, 2, 3]
 
 # copy l1, l2
-l3 = l1[:]
-l4 = l2[:]
+copy_l1 = l1[:]
+copy_l2 = l2[:]
 
 # determine the lengths of lists
-len_l3 = len(l3)
-len_l4 = len(l4)
+len_copy_l1 = len(copy_l1)
+len_copy_l2 = len(copy_l2)
 
 # add 0s to list with shorter length
-if len_l3 < len_l4:
-    l3 += [0] * (len_l4 - len_l3)
+if len_copy_l1 < len_copy_l2:
+    copy_l1 += [NUM] * (len_copy_l2 - len_copy_l1)
 else:
-    l4 += [0] * (len_l3 - len_l4)
+    copy_l2 += [NUM] * (len_copy_l1 - len_copy_l2)
 
 # create the target list by zipping lists
-list_target = [(x, y) for x, y in zip(l3, l4)]
+list_target = [(x, y) for x, y in zip(copy_l1, copy_l2)]
 print(list_target)
