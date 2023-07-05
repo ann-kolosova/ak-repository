@@ -10,13 +10,14 @@ let's take that number always > 100 and only three digits
 100 <= num <= 999
 """
 
-num = 123
+num = 299
 
 # convert int to string
 digit = str(num)
 
 # dictionary for hundreds and ones
 hundreds_ones = {
+    '0': '',
     '1': 'One',
     '2': 'Two',
     '3': 'Three',
@@ -44,6 +45,7 @@ tens_1 = {
 
 # dictionary for tens_2
 tens_2 = {
+    '0': '',
     '2': 'Twenty',
     '3': 'Thirty',
     '4': 'Forty',
@@ -54,17 +56,12 @@ tens_2 = {
     '9': 'Ninety',
 }
 
-if 100 <= num <= 999:
-    if digit[1] == '0' and digit[2] == '0':
-        print(f'"{hundreds_ones[digit[0]]} Hundred"')
-    elif digit[1] == '1':
-        print(f'"{hundreds_ones[digit[0]]} Hundred {tens_1[digit[1:]]}"')
-    elif digit[1] > '0' and digit[2] == '0':
-        print(f'"{hundreds_ones[digit[0]]} Hundred {tens_2[digit[1]]}"')
-    elif digit[1] == '0' and digit[2] != '0':
-        print(f'"{hundreds_ones[digit[0]]} Hundred {hundreds_ones[digit[2]]}"')
-    else:
-        print(f'"{hundreds_ones[digit[0]]} Hundred {tens_2[digit[1]]} '
-              f'{hundreds_ones[digit[2]]}"')
+result = [f'{hundreds_ones[digit[0]]} Hundred']
+
+if digit[1] == '1':
+    result.append(tens_1[digit[1:]])
 else:
-    print('"Please, use number in the range 100 - 999"')
+    result.append(tens_2[digit[1]])
+    result.append(hundreds_ones[digit[2]])
+
+print(' '.join(result))
