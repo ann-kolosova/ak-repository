@@ -21,7 +21,7 @@ l1 = [2, 4, 6, 8, 10]
 l2 = [1, 2, 3]
 """
 
-NUM = 0
+DEFAULT = 0
 
 l1 = [2, 4, 6, 8, 10]
 l2 = [1, 2, 3]
@@ -36,9 +36,9 @@ len_copy_l2 = len(copy_l2)
 
 # add 0s to list with shorter length
 if len_copy_l1 < len_copy_l2:
-    copy_l1 += [NUM] * (len_copy_l2 - len_copy_l1)
+    copy_l1 += [DEFAULT] * (len_copy_l2 - len_copy_l1)
 else:
-    copy_l2 += [NUM] * (len_copy_l1 - len_copy_l2)
+    copy_l2 += [DEFAULT] * (len_copy_l1 - len_copy_l2)
 
 # create the target list by zipping lists
 list_target = [(x, y) for x, y in zip(copy_l1, copy_l2)]
