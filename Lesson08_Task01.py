@@ -13,26 +13,27 @@ Input: [-7, 1, 2, 0, 3, 12, -24, 5, -1, 6]
 Output: Max value = "2016". Nums are: (-7, 12, -24)
 """
 
-from itertools import permutations
-
 l1 = [-7, 1, 2, 0, 3, 12, -24, 5, -1, 6]
 
 copy_l1 = l1[:]
 
-# remove all 0s from copy_l1
-l1_no_0 = [x for x in copy_l1 if x != 0]
+# sort the list in descending order by absolute value
+sorted_list = sorted(copy_l1, key=abs, reverse=True)
 
-# create different combinations
-combinations = list(permutations(l1_no_0, 3))
+# check if the length of the list is less than 3
+if len(sorted_list) < 3:
+    print('At least 3 values should be in the input')
+else:
+    max_mult = sorted_list[0] * sorted_list[1] * sorted_list[2]
+    max_nums = (sorted_list[0], sorted_list[1], sorted_list[2])
 
-# multiple first 3 values for each combination and find max
-mult = []
-for val in combinations:
-    mult_result = val[0] * val[1] * val[2]
-    mult.append(mult_result)
+    # find the maximum multiplication among three values
+    for i in range(len(sorted_list) - 2):
+        for j in range(i + 1, len(sorted_list) - 1):
+            for k in range(j + 1, len(sorted_list)):
+                mult = sorted_list[i] * sorted_list[j] * sorted_list[k]
+                if mult > max_mult:
+                    max_mult = mult
+                    max_nums = (sorted_list[i], sorted_list[j], sorted_list[k])
 
-# find first 3 values that return max multiplication result
-max_value = max(mult)
-max_nums = combinations[mult.index(max_value)]
-
-print(f'Max value = "{max_value}". Nums are: {max_nums}')
+    print(f'Max value = "{max_mult}". Nums are: {max_nums}')
