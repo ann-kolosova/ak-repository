@@ -21,8 +21,8 @@ try:
         data = input_txt.read()
 
     with open('output.txt', 'w') as output_txt:
-        for let in re.finditer('[a-zA-Z]', data):
-            output_txt.write(f'<{let.group(0)}> -> pos {let.start()}\n')
+        for curr_match in re.finditer('[a-zA-Z]', data):
+            output_txt.write(f'<{curr_match.group(0)}> -> pos {curr_match.start()}\n')
 
-except Exception as e:
-    print(e)
+except Exception as g_exc:
+    print(g_exc)
